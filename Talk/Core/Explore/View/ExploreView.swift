@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ExploreView: View {
+    @State private var searchText = ""
     var body: some View {
         NavigationStack {
-            ScrollView{
+            ScrollView(showsIndicators: false){
                 LazyVStack {
                     ForEach(0...10, id: \.self){ user in
                         VStack {
@@ -21,6 +22,8 @@ struct ExploreView: View {
                     }
                 }
             }
+            .navigationTitle("Search")
+            .searchable(text: $searchText, prompt: "Search")
         }
     }
 }
